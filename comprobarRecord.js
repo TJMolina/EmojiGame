@@ -49,7 +49,7 @@ function ofrecer(tiem)
 
 function rechazo()
 {
-    swal(':(','Has rechazado subir los datos','error');
+    swal('Has rechazado subir los datos','error');
 }
 
 function actualizar(tiem)
@@ -72,7 +72,7 @@ function actualizar(tiem)
                 `;
                 //document.body.append(form);
                 const enviar = new FormData(form);
-                    fetch('https://tablaemoji.000webhostapp.com/',{
+                    fetch('https://tablaemoji.000webhostapp.com/cambiarData.php',{
                         method: 'POST',
                         body: enviar
                     })

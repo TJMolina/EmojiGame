@@ -2,7 +2,7 @@ function activarTabla()
 {
     let ganadores = document.getElementById('usuarios');
     let peticion;
-    fetch('datos.php',{
+    fetch('https://tablaemoji.000webhostapp.com/datos.php',{
         method: 'POST',
         body: peticion
     })

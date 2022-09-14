@@ -7,7 +7,7 @@ function comprobar(tiem)
     <input name="tiempo" value="${tiem}">
     `;
     const enviar = new FormData(form);
-    fetch('datos.php',{//enviar datos al php
+    fetch('https://tablaemoji.000webhostapp.com/datos.php',{//enviar datos al php
         method: 'POST',
         body: enviar
     })
@@ -72,7 +72,7 @@ function actualizar(tiem)
                 `;
                 //document.body.append(form);
                 const enviar = new FormData(form);
-                    fetch('cambiarData.php',{
+                    fetch('https://tablaemoji.000webhostapp.com/',{
                         method: 'POST',
                         body: enviar
                     })

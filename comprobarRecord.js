@@ -9,7 +9,6 @@ function comprobar(tiem)
     const enviar = new FormData(form);
     fetch('https://tablaemoji.000webhostapp.com/datos.php',{//enviar datos al php
         method: 'POST',
-        permissions:'-rw-r--r--',
         body: enviar
     })
     .then(res=>res.json())//recise la respuesta en json
@@ -75,7 +74,6 @@ function actualizar(tiem)
                 const enviar = new FormData(form);
                     fetch('https://tablaemoji.000webhostapp.com/',{
                         method: 'POST',
-                        permissions:'-rw-r--r--',
                         body: enviar
                     })
                     .then(res=>res.json())

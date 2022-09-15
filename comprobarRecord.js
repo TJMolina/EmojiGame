@@ -39,7 +39,9 @@ function actualizar(tiem)
             content: "input",
             })
             .then((value) => {
-                declararNombre(value);
+            if(value!=''){
+             declararNombre(value);
+            }else swal("Error","Fallo en el registro","error");
                 });
                 
        

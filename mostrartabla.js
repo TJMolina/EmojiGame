@@ -8,7 +8,7 @@ function mostrarTabla(){
     if(oculta){
         oculta=false;
         boton.style.left = "0";
-        table.style.left = "0px";
+        table.style.left = "0";
     }else{
         oculta=true;
         boton.style.left = "0px";

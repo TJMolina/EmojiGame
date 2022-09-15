@@ -12,7 +12,7 @@ function mostrarTabla(){
     }else{
         oculta=true;
         boton.style.left = "0px";
-        table.style.left ="-300";
+        table.style.left ="-300px";
     }
 }
 

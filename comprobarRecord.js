@@ -49,7 +49,7 @@ function actualizar(tiem)
 
         function declararNombre(nom)
         {
-            records.splice(aQuien,0,[aQuien+1,nombre.value,record.value]);
+            records.splice(aQuien,0,[aQuien+1,nom,tiem]);
             records.pop();
             let i = 0;
             records.forEach(element => 

@@ -7,7 +7,7 @@ boton.addEventListener('click',mostrarTabla);
 function mostrarTabla(){
     if(oculta){
         oculta=false;
-        boton.style.left = "0";
+        boton.style.left = "210px";
         table.style.left = "0";
     }else{
         oculta=true;

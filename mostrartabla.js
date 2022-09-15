@@ -7,12 +7,12 @@ boton.addEventListener('click',mostrarTabla);
 function mostrarTabla(){
     if(oculta){
         oculta=false;
-        boton.style.left = "205px";
+        boton.style.left = "0";
         table.style.left = "0";
     }else{
         oculta=true;
         boton.style.left = "0px";
-        table.style.left ="-300px";
+        table.style.left ="-300";
     }
 }
 

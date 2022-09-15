@@ -1,3 +1,5 @@
+let records;
+let aQuien;
 function comprobar(tiem)
 {
     console.log('Entro a la funcion comprobar');
@@ -13,13 +15,13 @@ function comprobar(tiem)
     })
     .then(res=>res.json())//recise la respuesta en json
     .then(data =>{
-    console.log('Envio datos exitosamente, creo');
+        records = data;
         let gano = 0;
         let i = 0;
         do{
-    console.log('Comprobando record');
             let aux = data[i];
             if(tiem<aux[2]){
+                aQuien = i;
                 gano = 1;
                 i=10;
             }
@@ -47,26 +49,38 @@ function actualizar(tiem)
        
             function declararNombre(nom)
             {
-                let form = document.createElement('form');
-                form.method = 'POST';
-                form.innerHTML = `
-                <input name="usuario" value="${nom}">
-                <input name="tiempo" value="${tiem}">
-                `;
-                //document.body.append(form);
-                const enviar = new FormData(form);
-                    fetch('https://tablaemoji.000webhostapp.com/cambiarData.php',{
+                records.splice(aQuien,0,[aQuien+1,nombre.value,record.value]);
+                records.pop();
+                let i = 0;
+                records.forEach(element => {
+                    if(i>=aQuien)
+                    {
+                        element[0] = i+1;
+                    }
+                    i++;
+                });
+                
+                records.forEach(esto=>{
+                    let form = document.createElement('form');
+                    form.method = 'POST';
+                    let aEnvair = JSON.stringify(esto);//document.body.append(form);
+                    form.innerHTML = `<input name="data" value="${esto}">`;
+                    const enviar = new FormData(form);
+                    fetch('https://tablaemoji.000webhostapp.com/cambiarData.php',{//enviar datos al php
                         method: 'POST',
                         body: enviar
                     })
-                    .then(res=>res.json())
-                    .then(data =>{
-                        if(data){
-                            swal("Okey!","Datos subidos exitosamente.",'success');
-                        }else{
-                            swal("Error!","Operación cancelada. :(",'success');
-                        }
+                    .then(res=>res.json())//recise la respuesta en json
+                    .then(dat =>
+                        {
+                            if(dat){
+                                swal("Okey!","Datos subidos exitosamente.",'success');
+                            }else{
+                                swal("Error!","Operación cancelada. :(",'success');
+                             }
 
                         })
-            }
+                })
+                 
+            
 }

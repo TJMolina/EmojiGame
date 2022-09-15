@@ -246,16 +246,14 @@ function setRecord(){
         if(recordTime>playerTime){
             localStorage.setItem('record_time',playerTime);
             pResult.innerHTML='Superaste tu record.';
-            comprobar(playerTime);
         }else{
-
             pResult.innerHTML='No superaste tu record.';
         }
     }else{
         localStorage.setItem('record_time',playerTime);
         pResult.innerHTML='Es tu primera vez, NUEVO RECORD!';
-        comprobar(playerTime);
     }
+    comprobar(playerTime);
 }
 
 function showLives(){

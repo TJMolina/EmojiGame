@@ -28,40 +28,21 @@ function comprobar(tiem)
         if(gano==1)
         {
     console.log('Gano');
-            ofrecer(tiem);
+            actualizar(tiem);
         }
         });
 }
 
-function ofrecer(tiem)
-{
-    swal("Ha superado un record!!: Quieres registrarlo? Si/No", {
-        content: "input",
-        })
-        .then((value) => 
-        {
-            if(value=='Si'||value=='sI'||value=='SI'||value=='si'||value=='S'||value=='s')
-            {
-                actualizar(tiem);
-            }else{rechazo()};
-        })
-}
-
-function rechazo()
-{
-    swal('Has rechazado subir los datos','error');
-}
-
 function actualizar(tiem)
 {
-        swal("User name:", {
+        swal("Ha superado un record!!, User name:", {
             content: "input",
             })
             .then((value) => {
                 declararNombre(value);
                 });
                 
-            
+       
             function declararNombre(nom)
             {
                 let form = document.createElement('form');

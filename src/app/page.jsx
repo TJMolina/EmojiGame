@@ -380,7 +380,7 @@ export default function Home() {
     btnPlay = document.getElementById("play");
     btnPlay.addEventListener("click", start);
     showRecord();
-    setTimeout(setCanvasSize, 70);
+    setTimeout(setCanvasSize, 100);
   }, []);
 
   return (

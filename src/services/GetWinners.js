@@ -14,6 +14,9 @@ const Winners = {
                 `)}
             );
         })
+        .catch(e=>{
+            console.log(e);
+        });
     }
 }
 export {Winners}

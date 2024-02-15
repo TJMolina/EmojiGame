@@ -2,9 +2,10 @@
 import Table from "@/components/table/Table";
 import styles from "./index.module.css";
 import { Fragment, useEffect, useState } from "react";
-import { emojis, maps, maps2, maps3 } from "@/utils/Maps";
+import { preloadImages, emojis, maps, maps2, maps3 } from "@/utils/Maps";
 import { OnlineAction } from "@/services/checkRecordOnline";
 export default function Home() {
+  preloadImages();
   let canvas;
   let game;
   let WhatPlayer;
@@ -58,7 +59,6 @@ export default function Home() {
       (window.innerHeight > window.innerWidth
         ? window.innerWidth
         : window.innerHeight) * 0.6;
-
     canvasSize = Number(canvasSize.toFixed(0));
     canvas.setAttribute("height", canvasSize);
     canvas.setAttribute("width", canvasSize);
@@ -170,10 +170,10 @@ export default function Home() {
         if (col != "-") Dibujar(col, posX, posY);
         //si el juego esta pausado y la columna es un jugador, lo dibujo en la posicion 0
         if (pause && col == "O") {
-          game.drawImage(
-            emojis[WhatPlayer],
-            playerPosition.x - elementsSize,
-            playerPosition.y - elementsSize,
+          Dibujar(
+            WhatPlayer,
+            playerPosition.x,
+            playerPosition.y,
             elementsSize,
             elementsSize
           );
@@ -217,11 +217,10 @@ export default function Home() {
         deadAnimation();
       }
     }
-
-    game.drawImage(
-      emojis[WhatPlayer],
-      playerPosition.x - elementsSize,
-      playerPosition.y - elementsSize + 1,
+    Dibujar(
+      WhatPlayer,
+      playerPosition.x,
+      playerPosition.y + 1,
       elementsSize,
       elementsSize
     );
@@ -289,7 +288,7 @@ export default function Home() {
   function setRecord() {
     const recordTime = localStorage.getItem("record_time");
     const playerTime = timeStart;
-    OnlineAction.comprobar(playerTime)
+    OnlineAction.comprobar(playerTime);
     if (recordTime) {
       if (recordTime > playerTime) {
         localStorage.setItem("record_time", playerTime);
@@ -308,7 +307,6 @@ export default function Home() {
     timeStart++;
     spanTime.innerHTML = timeStart;
   }
-
   function showRecord() {
     //obtener el recor local
     const playerTime = localStorage.getItem("record_time");
@@ -317,7 +315,6 @@ export default function Home() {
       ? playerTime
       : timeStart;
   }
-
   function moveByKeys(event) {
     if (event.key == "Enter") enter();
     if (!pause) {
@@ -369,14 +366,13 @@ export default function Home() {
       switchDrawingLevel();
     }
   }
-
   useEffect(() => {
     canvas = document.querySelector("#game");
     game = canvas.getContext("2d");
 
     window.addEventListener("keydown", moveByKeys);
-    window.addEventListener("load", setCanvasSize);
     window.addEventListener("resize", setCanvasSize);
+    setCanvasSize();
 
     spanTime = document.querySelector("#time");
 
@@ -384,6 +380,7 @@ export default function Home() {
     btnPlay = document.getElementById("play");
     btnPlay.addEventListener("click", start);
     showRecord();
+    setTimeout(setCanvasSize, 70);
   }, []);
 
   return (

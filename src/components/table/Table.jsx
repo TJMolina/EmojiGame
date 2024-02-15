@@ -7,9 +7,12 @@ export default function Table() {
   function toggleShowTable(){
     showState(!show)
   }
-  useEffect(()=>{
+  const getRankings = async ()=>{
     const table = document.getElementById('usuarios')
     Winners.getWinnersTable(table)
+  }
+  useEffect(()=>{
+    getRankings();
   },[]);
   return (
     <div id="header" className={`${styles.header} ${show?styles.show:styles.hide}`}>

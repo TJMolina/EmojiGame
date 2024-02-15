@@ -1,5 +1,6 @@
 import { Inter } from "next/font/google";
 import "./global.css";
+import { Fragment } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -10,7 +11,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="es">
       <body className={inter.className}>{children}</body>
     </html>
   );

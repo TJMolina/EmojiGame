@@ -24,8 +24,7 @@ const preloadImages = ()=>{
             emojis[key] = img;
         }
         catch(e){
-            preloadImages();
-            break;
+            console.log(e);
         }
       }
 }

@@ -1,0 +1,26 @@
+.header {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    transition: left 1s ease;
+}
+.header.hide{
+    left: -170px;
+}
+.header.show{
+    left: 0;
+}
+.header table{
+    width: 170px;
+    display: flex;
+    flex-direction: column;
+}
+.header table th, .header table td{
+    padding-left: 2px;
+    padding-right: 2px;
+}
+.header button{
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+}
